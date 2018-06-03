@@ -39,4 +39,4 @@ Precisely:
 2.  We have message of type 1 in case:  
     `saleEntityDto.quantity` > 1 && `adjustmentDto` = null
 3.  We have message of type 1 in case:  
-    `saleEntityDto.quantity` > 1 && `adjustmentDto` = null
+    `saleEntityDto.quantity` >= 1 && `adjustmentDto` != null

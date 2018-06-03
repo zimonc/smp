@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface SaleService
 {
-    SaleEntity create(SaleEntity saleEntity);
+    SaleEntity createOrUpdate(SaleEntity saleEntity);
     List<SaleEntity> findByProductType(String productType);
     void adjust(String productType, Operation operation, Double value);
 }
