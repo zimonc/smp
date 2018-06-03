@@ -42,7 +42,7 @@ About the `SaleDaoInMemory` implementation, since it comes to work in a single-t
 I did not payed attention in synchronization issues nor in sharing the same `memory` list  
 behind the in memory feature, since there is no need to have more than one SaleDao` instance to the application.  
 
-Messages, one transformed from text to objects (something not yet deal with in this moment)  
+Messages of type 1, 2 and 3, once transformed from text to objects (performed by `MessageDtoFactory`)  
 will be represented by the same `MessageDto` instances.
 The above class have two `saleEntityDto` and `adjustmentDto` fields which are instances of  
 `SaleEntity`and `AdjustmentDto` classes.  
