@@ -30,6 +30,17 @@ public class SaleServiceDefault implements SaleService
     @Override
     public void adjust(String productType, Operation operation, Double value)
     {
+        List<SaleEntity> sales = saleDao.findByProductType(productType);
+        if (operation.equals(Operation.ADD))
+        {
+            sales.forEach((s) -> { s.setPrice(s.getPrice() + value); saleDao.createOrUpdate(s); });
+        } else if (operation.equals(Operation.SUBTRACT))
+        {
+            sales.forEach((s) -> { s.setPrice(s.getPrice() - value); saleDao.createOrUpdate(s); });
+        } else
+        {
+            sales.forEach((s) -> { s.setPrice(s.getPrice() * value); saleDao.createOrUpdate(s); });
+        }
 
     }
 }
