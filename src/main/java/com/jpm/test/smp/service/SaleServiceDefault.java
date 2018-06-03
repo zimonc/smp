@@ -20,12 +20,10 @@ public class SaleServiceDefault implements SaleService
         return saleDao.createOrUpdate(saleEntity);
     }
 
-
-
     @Override
     public List<SaleEntity> findByProductType(String productType)
     {
-        return null;
+        return saleDao.findByProductType(productType);
     }
 
 
