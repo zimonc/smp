@@ -4,6 +4,7 @@ import com.jpm.test.smp.entity.SaleEntity;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SaleDaoInMemory implements SaleDao
 {
@@ -34,9 +35,8 @@ public class SaleDaoInMemory implements SaleDao
     }
 
 
-    @Override
-    public List<SaleEntity> findByProductType(String productType)
+    public List<SaleEntity> findByProductType(final String productType)
     {
-        return null;
+        return memory.stream().filter(s -> s.getProductType().equals(productType)).collect(Collectors.toList());
     }
 }
