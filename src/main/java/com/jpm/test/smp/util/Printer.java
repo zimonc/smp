@@ -15,7 +15,7 @@ public class Printer
         System.out.println(String.format(PRINT_FORMAT, "SALES"));
         List<String> productTypeList = new ArrayList<>(salesReport.keySet());
         productTypeList.stream().forEach(productType -> {
-            System.out.println(String.format("  %s = %s", productType, salesReport.get(productType)));
+            System.out.println(String.format("  %s = %.2f", productType, salesReport.get(productType)));
         });
     }
 
