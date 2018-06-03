@@ -61,4 +61,3 @@ Precisely:
 `cd smp`  
 `mvn package`    
 `java -cp target/com.jpm.test.smp-1.0-SNAPSHOT.jar com.jpm.test.smp.app.cmdline.CmdLineApp data/input.txt`  
-
