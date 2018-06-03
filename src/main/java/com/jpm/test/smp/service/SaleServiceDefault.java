@@ -26,7 +26,6 @@ public class SaleServiceDefault implements SaleService
         return saleDao.findByProductType(productType);
     }
 
-
     @Override
     public void adjust(String productType, Operation operation, Double value)
     {
