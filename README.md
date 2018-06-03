@@ -1,6 +1,21 @@
 # smp
 Small Message Processing
 
+# SOLUTION
+
+In the real world, if we have the need that an external company sends us messages  
+we probably have the need of a service up and running listening for TCP connections.  
+Setting up a message broker (e.g. RabbitMQ) to let a single producer send us messages,  
+it would seem a little wasted, but it would work perfectly.
+A trivial single threaded TCP server would be closer to the test scenario,  
+however for the purpose of the test this solution will be cmdline based where a bunch  
+of message must be passed through an input file; the life-cycle of this solution  
+starts and ends with the cmdline itself.
+In any case, whatever the input source is and anywhere the `MessageProcessor` is used,
+we should only fix things to transform the message received in the MessageDto  
+to be processed by `MessageProcessor.process`.  
+
+
 # INPUT FORMAT
 
 We have three different kinds of messages:
@@ -35,8 +50,15 @@ Depending on some of the values encapsulated by the just mentioned fields,
 whe may have one of the three messages reported by the text of this test.  
 Precisely:  
 1.  We have message of type 1 in case:  
-    `saleEntityDto.quantity` = 1 && `adjustmentDto` = null
+    `saleEntityDto.quantity` = 1 && `adjustmentDto` = null  
 2.  We have message of type 1 in case:  
-    `saleEntityDto.quantity` > 1 && `adjustmentDto` = null
+    `saleEntityDto.quantity` > 1 && `adjustmentDto` = null  
 3.  We have message of type 1 in case:  
-    `saleEntityDto.quantity` >= 1 && `adjustmentDto` != null
+    `saleEntityDto.quantity` >= 1 && `adjustmentDto` != null  
+
+# HOW TO RUN THE PROJECT  
+
+`cd smp`  
+`mvn package`    
+`java -cp target/com.jpm.test.smp-1.0-SNAPSHOT.jar com.jpm.test.smp.app.cmdline.CmdLineApp data/input.txt`  
+
