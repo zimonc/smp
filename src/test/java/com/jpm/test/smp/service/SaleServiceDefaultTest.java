@@ -99,4 +99,23 @@ class SaleServiceDefaultTest
         Mockito.verify(saleDaoMock, Mockito.times(1)).createOrUpdate(saleEntityList.get(1));
     }
 
+    @Test
+    void findLastSales()
+    {
+        SaleDao saleDaoMock = Mockito.mock(SaleDao.class);
+        SaleService saleService = new SaleServiceDefault(saleDaoMock);
+        List<SaleEntity> saleEntityList = Arrays.asList(
+            new SaleEntity("apple", 12.5, 1),
+            new SaleEntity("nut", 12.3, 2));
+        String productType = "nut";
+        int number = 10;
+        Mockito.when(saleDaoMock.findLastSales(number)).thenReturn(saleEntityList);
+
+        List<SaleEntity> lastSales = saleService.findLastSales(number);
+
+        Assertions.assertEquals(saleEntityList, lastSales);
+        Mockito.verify(saleDaoMock, Mockito.times(1)).findLastSales(number);
+
+    }
+
 }

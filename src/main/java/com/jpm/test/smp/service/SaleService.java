@@ -9,4 +9,5 @@ public interface SaleService
     SaleEntity createOrUpdate(SaleEntity saleEntity);
     List<SaleEntity> findByProductType(String productType);
     void adjust(String productType, Operation operation, Double value);
+    List<SaleEntity> findLastSales(int number);
 }

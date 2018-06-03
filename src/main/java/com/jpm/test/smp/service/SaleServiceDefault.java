@@ -42,4 +42,11 @@ public class SaleServiceDefault implements SaleService
         }
 
     }
+
+
+    @Override
+    public List<SaleEntity> findLastSales(int number)
+    {
+        return saleDao.findLastSales(number);
+    }
 }

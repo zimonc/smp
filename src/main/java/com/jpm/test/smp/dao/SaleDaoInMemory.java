@@ -39,4 +39,11 @@ public class SaleDaoInMemory implements SaleDao
     {
         return memory.stream().filter(s -> s.getProductType().equals(productType)).collect(Collectors.toList());
     }
+
+
+    @Override
+    public List<SaleEntity> findLastSales(int number)
+    {
+        return memory.subList(memory.size() - number, memory.size());
+    }
 }

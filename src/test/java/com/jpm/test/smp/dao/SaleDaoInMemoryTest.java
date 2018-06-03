@@ -57,4 +57,20 @@ class SaleDaoInMemoryTest
         Assertions.assertEquals(0, filteredSales.size());
     }
 
+    @Test
+    void findLastSales()
+    {
+        List<SaleEntity> memory = Mockito.mock(List.class);
+        SaleDao saleDao = new SaleDaoInMemory(memory);
+        List<SaleEntity> saleEntityList = Arrays.asList(new SaleEntity("apple", 0.23, 4));
+        Mockito.when(memory.size()).thenReturn(18);
+        Mockito.when(memory.subList(Mockito.isA(Integer.class), Mockito.isA(Integer.class))).thenReturn(saleEntityList);
+
+        List<SaleEntity> lastSales = saleDao.findLastSales(10);
+
+        Assertions.assertEquals(1, lastSales.size());
+        Assertions.assertEquals(saleEntityList.get(0), lastSales.get(0));
+        Mockito.verify(memory, Mockito.times(1)).subList(18 - 10, 18);
+    }
+
 }

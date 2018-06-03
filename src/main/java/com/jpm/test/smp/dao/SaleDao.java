@@ -7,4 +7,5 @@ public interface SaleDao
 {
     SaleEntity createOrUpdate(SaleEntity saleEntity);
     List<SaleEntity> findByProductType(String productType);
+    List<SaleEntity> findLastSales(int number);
 }
